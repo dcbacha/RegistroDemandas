@@ -55,11 +55,12 @@
 <!--******************************************************************************************************************************************-->
 	<table class="table table-bordered">
 			<tr>
-				<th class="text-center" colspan="4" bgcolor="#CCC">
+				<td class="text-center" bgcolor="#CCC">
 					<strong>Identificação do Cliente</strong>
-				</th>
+				</td>
 			</tr>
 	</table>
+
 	<table class="table table-body table-break">
 			<tr>
 				<td width="5%">
