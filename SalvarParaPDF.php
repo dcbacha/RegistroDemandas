@@ -106,6 +106,7 @@ ob_start();
 
 <?php
 	$i=0;
+	$total=0;
 	for($i; $i <= 20 ; $i++) {
 
 		if(isset($_POST['descricao-demanda'.$i])){
@@ -134,9 +135,22 @@ ob_start();
 					$data_entrega_demanda[$i]= date("d/m/Y", strtotime($originalDate_entrega));
 				} else{$data_entrega_demanda[$i] = null; }				
 
-
+				$total++;
 
 			?>
+
+	<?php
+	if($total>1){
+	?>
+	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
+			<tr>
+				<td align="center" class='text-center' bgcolor='#000'>
+				</td>
+			</tr>
+	</table>
+	<?php
+	}
+	?>
 
 	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
 			<tr>
@@ -259,12 +273,6 @@ ob_start();
 				</tr>
 	</table>
 	
-	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
-			<tr>
-				<td align="center" class='text-center' bgcolor='#000'>
-				</td>
-			</tr>
-	</table>
 
 <!-- aqui sai do loop -->
 
