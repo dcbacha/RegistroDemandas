@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 
 	<link rel="icon" href="psgicon.ico">
-	<title>Registro de Atividades</title>
+	<title>Registro de Demandas</title>
 
 	<script src="js/jquery-3.1.1.js" type="text/javascript"></script>
 	<script src="js/add-row.js" type="text/javascript"></script>
