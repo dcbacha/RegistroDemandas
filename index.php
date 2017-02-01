@@ -63,13 +63,13 @@
 
 	<table class="table table-body table-break">
 			<tr>
-				<td width="5%">
+				<td width="5%" class="titulo">
 					<strong>Empresa:</strong>
 				</td>
 				<td width="45%">
 					<input class="form-control input-sm" type="text" name="empresa">
 				</td>
-				<td width="5%">
+				<td width="5%" class="titulo">
 					<strong>Contato:</strong>
 				</td>
 				<td width="45%">
@@ -78,13 +78,13 @@
 			</tr>
 
 			<tr>
-				<td>
+				<td class="titulo">
 					<strong>Telefone:</strong>
 				</td>
 				<td>
 					<input class="form-control input-sm" type="number" name="telefone" >
 				</td>
-				<td>
+				<td class="titulo">
 					<strong>E-mail:</strong>
 				</td>
 				<td>
@@ -92,7 +92,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="titulo">
 					<strong>Área:</strong>
 				</td>
 				<td colspan="3">
@@ -109,18 +109,16 @@
 			</tr>
 	</table>
 
-<div id="tab_logic">
 
-<div id='addr0'>
 	<table class='table table-body table-break'>
 			<tr>
-				<td width='5%'>
+				<td width='5%' class="titulo">
 					<strong>Código:</strong>
 				</td>
 				<td width='10%'>
 					<input class='form-control input-sm' type='number' name='codigo-demanda0'>
 				</td>
-				<td width='5%'>
+				<td width='5%' class="titulo">
 					<strong>Sistema:</strong>
 				</td>
 				<td>
@@ -158,7 +156,7 @@
     				</select>
 				</td>
 							
-				<td width='5%'>
+				<td width='5%' class="titulo">
 					<strong>Prioridade:</strong>
 				</td>
 				<td>
@@ -172,7 +170,7 @@
 			</tr>
 	
 			<tr>
-				<td width='5%'>
+				<td width='5%' class="titulo">
 					<strong>Descrição:</strong>
 				</td>
 				<td colspan='5'>
@@ -183,7 +181,7 @@
 
 	<table class='table table-body table-break'>
 			<tr>
-				<td>
+				<td class="titulo">
 					<strong>Observação:</strong>
 				</td>
 				<td colspan="3">
@@ -191,13 +189,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td width='15%'>
+				<td width='15%' class="titulo">
 					<strong>Data de Abertura:</strong>
 				</td>
 				<td width='35%'>
 					<input class='form-control input-sm' type='date' name='data-abertura-demanda0'>
 				</td>
-				<td width='15%'>
+				<td width='15%' class="titulo">
 					<strong>Data de Entrega:</strong>
 				</td>
 				<td width='35%'>
@@ -210,13 +208,13 @@
 
 	<table class='table table-body table-break'>
 			<tr>
-				<td width='20%'>
+				<td width='20%' class="titulo">
 					<strong>Responsável pela Abertura:</strong>
 				</td>
 				<td width='30%'>
 					<input class='form-control input-sm' type='text' name='responsavel-abertura0'>
 				</td>
-				<td width='20%'>
+				<td width='20%' class="titulo">
 					<strong>Responsável pela Execução:</strong>
 				</td>
 				<td width='30%'>
@@ -227,7 +225,7 @@
 
 	<table class='table table-body table-break'>
 			<tr>
-				<td width='5%'>
+				<td width='5%' class="titulo">
 					<strong>Status:</strong>
 				</td>
 				<td width='30%'>
@@ -241,13 +239,13 @@
 							<option value='Concluída'>6-Concluída</option>
     				</select>
 				</td>
-				<td width='15%'>
+				<td width='15%' class="titulo">
 					<strong>Esforço Estimado:</strong>
 				</td>
 				<td width='20%'>
 					<input class='form-control input-sm' type='time' name='esforco-estimado-demanda0'>
 				</td>
-				<td width='10%'>
+				<td width='10%' class="titulo">
 					<strong>Esforço Total:</strong>
 				</td>
 				<td width='20%'>
@@ -256,15 +254,15 @@
 			</tr>
 	</table>
 
-	<table class='table table-body table-break borda-forte'>
+	<table class='table table-body table-break'>
 			<tr>
-				<td width='15%'>
+				<td width='15%' class="titulo">
 					<strong>Aceite Analista:</strong>
 				</td>
 				<td>
 					<input class='form-control input-sm' type='text' name='aceite-analista0'>
 				</td>
-				<td width='20%'>
+				<td width='20%' class="titulo">
 					<strong>Opinião do Cliente:</strong>
 				</td>
 				<td width='20%'>
@@ -280,30 +278,17 @@
 				</tr>
 	</table>
 
-	<a style='margin-top: 3px;margin-bottom: 3px;' id='delete_row0' class='pull-right btn btn-danger'>Deletar</a>
-
-</div>
-
-<div id='addr1'></div>
 
 
-</div>
-<table class="table">
-<tr width=100%>
-<a style="margin-top: 3px;" id="add_row" class="btn btn-success pull-left" name="adiciona">Adicionar nova demanda</a>
-</tr>
-</table>
 
 <!--******************************************************************************************************************************************-->
 <table class="table">
 <tr>
-	<button type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-primary">
-		Gerar PDF
+	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-success pull-left">
+		Salvar
 	</button>
-	<button style="margin-left: 3px;" type="submit" name="excel" formaction="SalvarParaExcel.php" class="btn btn-primary">
-		Gerar Excel
-	</button>
-	<button onclick="return reload();" formnovalidate class="btn btn-primary pull-right" >
+	
+	<button style="margin-top: 3px; margin-bottom: 3px;" onclick="return reload();" formnovalidate class="btn btn-primary pull-right" >
 		Novo
 	</button>
 	</tr>
