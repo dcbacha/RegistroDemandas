@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<?php include("config.php");?>
 
 <head>
 	<meta charset="utf-8" />
@@ -14,8 +14,7 @@
 	<link rel="icon" href="psgicon.ico">
 	<title>Registro de Demandas</title>
 
-	<script src="js/jquery-3.1.1.js" type="text/javascript"></script>
-	<script src="js/add-row.js" type="text/javascript"></script>
+	
 
 <script type="text/javascript">
 	
@@ -35,7 +34,7 @@
 
 <body style="padding-top: 10px" id="target">
 <div class="container" id="content">
-<form method="post">
+<form method="post" id="demanda">
 	
 	<table class=" table table-bordered" id="name">
 			<tr>
@@ -116,13 +115,13 @@
 					<strong>Código:</strong>
 				</td>
 				<td width='10%'>
-					<input class='form-control input-sm' type='number' name='codigo-demanda0'>
+					<input class='form-control input-sm' type='number' name='codigo-demanda' id="codigo-demanda">
 				</td>
 				<td width='5%' class="titulo">
 					<strong>Sistema:</strong>
 				</td>
 				<td>
-					<select class='form-control input-sm' name='sistema-demanda0'>
+					<select class='form-control input-sm' name='sistema' id="sistema">
 						<option value=''>(selecione)</option>
     					<option value='CERBERUS'>CERBERUS</option>
     					<option value='CONTATOS'>CONTATOS</option>
@@ -160,7 +159,7 @@
 					<strong>Prioridade:</strong>
 				</td>
 				<td>
-					<select class='form-control input-sm' name='prioridade-demanda0'>
+					<select class='form-control input-sm' name='prioridade-demanda' id="prioridade-demanda">
 							<option value=''>(selecione)</option>
 							<option value='Alta'>1-Alta</option>
 							<option value='Média'>2-Média</option>
@@ -174,7 +173,7 @@
 					<strong>Descrição:</strong>
 				</td>
 				<td colspan='5'>
-					<input class='form-control input-sm' type='text' name='descricao-demanda0'>
+					<input class='form-control input-sm' type='text' name='descricao-demanda' id='descricao-demanda'>
 				</td>
 			</tr>
 	</table>
@@ -185,7 +184,7 @@
 					<strong>Observação:</strong>
 				</td>
 				<td colspan="3">
-					<input class='form-control input-sm' type='text' name='obs-demanda0'>
+					<input class='form-control input-sm' type='text' name='obs-demanda' id='obs-demanda'>
 				</td>
 			</tr>
 			<tr>
@@ -193,13 +192,13 @@
 					<strong>Data de Abertura:</strong>
 				</td>
 				<td width='35%'>
-					<input class='form-control input-sm' type='date' name='data-abertura-demanda0'>
+					<input class='form-control input-sm' type='date' name='data-abertura-demanda' id='data-abertura-demanda'>
 				</td>
 				<td width='15%' class="titulo">
 					<strong>Data de Entrega:</strong>
 				</td>
 				<td width='35%'>
-					<input class='form-control input-sm' type='date' name='data-entrega-demanda0'>
+					<input class='form-control input-sm' type='date' name='data-entrega-demanda' id='data-entrega-demanda'>
 				</td>
 			</tr>
 			
@@ -212,13 +211,13 @@
 					<strong>Responsável pela Abertura:</strong>
 				</td>
 				<td width='30%'>
-					<input class='form-control input-sm' type='text' name='responsavel-abertura0'>
+					<input class='form-control input-sm' type='text' name='responsavel-abertura' id='responsavel-abertura'>
 				</td>
 				<td width='20%' class="titulo">
 					<strong>Responsável pela Execução:</strong>
 				</td>
 				<td width='30%'>
-					<input class='form-control input-sm' type='text' name='responsavel-execucao0'>
+					<input class='form-control input-sm' type='text' name='responsavel-execucao' id='responsavel-execucao'>
 				</td>
 			</tr>
 	</table>
@@ -229,7 +228,7 @@
 					<strong>Status:</strong>
 				</td>
 				<td width='30%'>
-					<select class='form-control input-sm' name='status-demanda0'>
+					<select class='form-control input-sm' name='status-demanda' id='status-demanda'>
 							<option value=''>(selecione)</option>
 							<option value='Resgistrada'>1-Resgistrada</option>
 							<option value='Em andamento'>2-Em Andamento</option>
@@ -243,13 +242,13 @@
 					<strong>Esforço Estimado:</strong>
 				</td>
 				<td width='20%'>
-					<input class='form-control input-sm' type='time' name='esforco-estimado-demanda0'>
+					<input class='form-control input-sm' type='time' name='esforco-estimado' id='esforco-estimado'>
 				</td>
 				<td width='10%' class="titulo">
 					<strong>Esforço Total:</strong>
 				</td>
 				<td width='20%'>
-					<input class='form-control input-sm' type='time' name='esforco-total-demanda0'>
+					<input class='form-control input-sm' type='time' name='esforco-total' id='esforco-total'>
 				</td>
 			</tr>
 	</table>
@@ -260,13 +259,13 @@
 					<strong>Aceite Analista:</strong>
 				</td>
 				<td>
-					<input class='form-control input-sm' type='text' name='aceite-analista0'>
+					<input class='form-control input-sm' type='text' name='aceite-analista' id='aceite-analista'>
 				</td>
 				<td width='20%' class="titulo">
 					<strong>Opinião do Cliente:</strong>
 				</td>
 				<td width='20%'>
-					<select class='form-control input-sm' name='opiniao-cliente0'>
+					<select class='form-control input-sm' name='opiniao-cliente' id='opiniao-cliente'>
 					<option value=''>(selecione)</option>
     				<option value='Atendeu totalmente'>Atendeu totalmente</option>
     				<option value='Satisfez'>Satisfez</option>
@@ -284,9 +283,10 @@
 <!--******************************************************************************************************************************************-->
 <table class="table">
 <tr>
-	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-success pull-left">
+	<a style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" class="btn btn-success pull-left">
+<!--	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-success pull-left"> -->
 		Salvar
-	</button>
+	</a>
 	
 	<button style="margin-top: 3px; margin-bottom: 3px;" onclick="return reload();" formnovalidate class="btn btn-primary pull-right" >
 		Novo
@@ -297,5 +297,10 @@
 </form>
 </div>
 </body>
+
+
+	<script src="js/jquery-3.1.1.js" type="text/javascript"></script>
+	<script src="js/add-row.js" type="text/javascript"></script>
+	<script src="js/salvabd.js" type="text/javascript"></script>
 
 </html>
