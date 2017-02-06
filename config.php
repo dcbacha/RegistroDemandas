@@ -2,9 +2,9 @@
 
 header("Content-Type: text/html; charset=utf-8");
 
+session_start();
 
-
-/* para produção */
+/* para produção 
 $DB_host = "localhost";
 $DB_name = "PSGDemandas";
 //$DB_user = "geo_estatistica-usr";
@@ -24,4 +24,12 @@ $DB_pass = "";
 //2ef?Awru     -- ftp 
 //webmaster
 
+*/
+
+ 	$host = 'localhost'; 
+	$user = 'root';
+	$senhabd = '';
+	$bd = 'PSGDemandas';
+
+	$conexao = mysqli_connect($host, $user, $senhabd, $bd);
 ?>

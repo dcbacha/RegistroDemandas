@@ -10,6 +10,7 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 
 	<link rel="icon" href="psgicon.ico">
 	<title>Registro de Demandas</title>
@@ -34,7 +35,7 @@
 
 <body style="padding-top: 10px" id="target">
 <div class="container" id="content">
-<form method="post" id="demanda">
+<form method="post" id="demanda" enctype="multipart/form-data">
 	
 	<table class=" table table-bordered" id="name">
 			<tr>
@@ -276,6 +277,16 @@
 
 				</tr>
 	</table>
+	<table>
+		<label class="control-label">Anexar arquivos(.pdf, .txt, .png, .jpg, .doc, .xls)</label>
+	<!--	<input type="file" class="filestyle"  name="arquivo[]" multiple id="arquivo" data-buttonBefore="true" data-buttonText="Procurar"> -->
+		
+		<input type="file" class="file"  name="arquivo[]" multiple id="arquivo" data-show-upload="false"  data-allowed-file-extensions='["pdf", "txt", "jgp", "png","doc", "xls"]' data-browse-label="Procurar" data-show-remove="false" data-browse-class="btn btn-default">
+
+
+
+		
+	</table>
 
 
 
@@ -283,24 +294,87 @@
 <!--******************************************************************************************************************************************-->
 <table class="table">
 <tr>
-	<a style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" class="btn btn-success pull-left">
+	<button style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" class="btn btn-success pull-left" type="submit" name="salvaBD">
 <!--	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-success pull-left"> -->
 		Salvar
-	</a>
+	</button>
 	
-	<button style="margin-top: 3px; margin-bottom: 3px;" onclick="return reload();" formnovalidate class="btn btn-primary pull-right" >
-		Novo
+	<button style="margin-top: 3px; margin-bottom: 3px;" onclick="return reload();" formnovalidate class="btn btn-danger pull-right" >
+		Cancelar
 	</button>
 	</tr>
 </table>
 
 </form>
-</div>
-</body>
 
+
+<?php
+
+
+
+
+
+if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe']=="open")
+{
+	$total = count($_FILES['arquivo']['name']);
+	$id = $_SESSION['id'] ;
+
+	
+
+	for($i=0; $i<$total; $i++) {
+
+		$allowed =  array('pdf', 'PDF', 'txt' , 'png' ,'jpg', 'doc', 'xls');
+		$filename = $_FILES['arquivo']['name'][$i];
+		$ext = pathinfo($filename, PATHINFO_EXTENSION);
+		if(!in_array($ext,$allowed) ) {
+    		echo 'error';
+		}else{
+
+		$fileName = $_FILES['arquivo']['name'][$i];
+		$tmpName  = $_FILES['arquivo']['tmp_name'][$i];
+		$fileSize = $_FILES['arquivo']['size'][$i];
+		$fileType = $_FILES['arquivo']['type'][$i];
+
+		$fp      = fopen($tmpName, 'r');
+		$content = fread($fp, filesize($tmpName));
+		$content = addslashes($content);
+	
+		fclose($fp);
+
+		if(!get_magic_quotes_gpc())
+		{
+	   		$fileName = addslashes($fileName);
+		}
+
+		
+
+		$query = "INSERT INTO documentos (id_demanda, name, size, type, content ) ".
+		"VALUES ('$id', '$fileName', '$fileSize', '$fileType', '$content')";
+
+		mysqli_query($conexao, $query) or die('Error, query failed');
+	}
+		
+	}
+
+	$_SESSION['safe'] = "close";
+	
+} 
+
+?>
 
 	<script src="js/jquery-3.1.1.js" type="text/javascript"></script>
-	<script src="js/add-row.js" type="text/javascript"></script>
-	<script src="js/salvabd.js" type="text/javascript"></script>
+<!--	<script src="js/add-row.js" type="text/javascript"></script>-->
+	<script src="js/salvabd.js" type="text/javascript"></script> 
+<!--	<script src="js/bootstrap-filestyle.js" type="text/javascript"></script>-->
+
+<!--	<script src="js/canvas-to-blob.min.js" type="text/javascript"></script>-->
+<!--	<script src="js/sortable.min.js" type="text/javascript"></script> -->
+<!--	<script src="js/purify.min.js" type="text/javascript"></script> -->
+	<script src="js/fileinput.js"></script>
+	<script src="js/bootstrap.js" type="text/javascript"></script>
+	
+	
+</div>
+</body>
 
 </html>

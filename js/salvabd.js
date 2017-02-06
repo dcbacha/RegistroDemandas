@@ -2,12 +2,21 @@
 
 $("#salvaBD").click(function(){
 	
-	console.log("entrou no salvar");
-	console.log($("#codigo-demanda").val());
 
+	var r = confirm("Enviar registro de demanda?");
+    	if (r == 1){
+        	//window.reload;
+    	
+	console.log("entrou no salvar");
+//	console.log($("#codigo-demanda").val());
+
+	//var ext = ("#arquivo").val();
+
+	//setTimeout(function(){ console.log(ext) }, 1000);
 	//var dados = $("#demanda").serialize();
 	var dados = [];
 	
+
 	var sistema = $("#sistema").val();
 	var prioridade = $("#prioridade-demanda").val();
 	var descricao = $("#descricao-demanda").val();
@@ -39,15 +48,9 @@ $("#salvaBD").click(function(){
 	};
 
 	dados.push(demanda);
-
 	console.log(dados);
-
-
 	var table = JSON.stringify(demanda);
-
-
 	var tablejson = {"dados" : table }; 
-
 	console.log(tablejson);
 
 	$.ajax({
@@ -67,9 +70,11 @@ $("#salvaBD").click(function(){
 			console.log("finalizado!");
 			});
 
+	}
+    	else{
+        	return false;
+    	}
 
 
+}); 
 
-
-
-});

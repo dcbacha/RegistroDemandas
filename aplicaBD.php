@@ -32,11 +32,17 @@ $sql = "INSERT INTO `demandas` (`sistema`, `prioridade`, `descricao`, `observaca
 //$sql = substr($sql, 0, -1);
 echo $sql;
 
-$stmt = $DBcon->prepare($sql);
-$stmt->execute();
+//$stmt = $DBcon->prepare($sql);
+//$stmt->execute();
 
+mysqli_query($conexao, $sql) or die('Error, query failed');
 
-echo 'Usuários cadastrados: ' . $cadastrados;
+//echo 'Usuários cadastrados: ' . $cadastrados;
+
+$id = mysqli_insert_id($conexao);
+
+$_SESSION['id'] = $id;
+$_SESSION['safe'] = "open";
 
 
 ?>
