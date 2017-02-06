@@ -363,13 +363,8 @@ if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe
 ?>
 
 	<script src="js/jquery-3.1.1.js" type="text/javascript"></script>
-<!--	<script src="js/add-row.js" type="text/javascript"></script>-->
 	<script src="js/salvabd.js" type="text/javascript"></script> 
-<!--	<script src="js/bootstrap-filestyle.js" type="text/javascript"></script>-->
 
-<!--	<script src="js/canvas-to-blob.min.js" type="text/javascript"></script>-->
-<!--	<script src="js/sortable.min.js" type="text/javascript"></script> -->
-<!--	<script src="js/purify.min.js" type="text/javascript"></script> -->
 	<script src="js/fileinput.js"></script>
 	<script src="js/bootstrap.js" type="text/javascript"></script>
 	
