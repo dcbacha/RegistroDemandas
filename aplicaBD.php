@@ -8,8 +8,13 @@ $dados = json_decode($_POST["dados"],true);
 
  
 // inserir na tabela de condutores
-$sql = "INSERT INTO `demandas` (`sistema`, `prioridade`, `descricao`, `observacao`, `dataAbertura`, `dataEntrega`, `responsavelAbertura`, `responsavelExecucao`, `statusDemanda`, `esforcoEstimado`, `esforcoTotal`, `aceiteAnalista`, `opiniaoCliente`) VALUES";
-
+$sql = "INSERT INTO `demandas` (`empresa`, `contato`, `telefone`, `email`, `area`, `sistema`, `prioridade`, `descricao`, `observacao`, `dataAbertura`, `dataEntrega`, `responsavelAbertura`, `responsavelExecucao`, `statusDemanda`, `esforcoEstimado`, `esforcoTotal`, `aceiteAnalista`, `opiniaoCliente`) VALUES";
+		
+		$empresa = $dados['empresa'];
+		$contato = $dados['contato'];
+		$telefone = $dados['telefone'];
+		$email = $dados['email'];
+		$area = $dados['area'];
 
     	$sistema = $dados['sistema'];
 		$prioridade = $dados['prioridade'];
@@ -25,7 +30,7 @@ $sql = "INSERT INTO `demandas` (`sistema`, `prioridade`, `descricao`, `observaca
 		$aceiteAnalista = $dados['aceiteAnalista'];
 		$opiniaoCliente =$dados['opiniaoCliente'];
 		 
-		$sql .= " ('{$sistema}', '{$prioridade}', '{$descricao}', '{$observacao}', '{$dataAbertura}', '{$dataEntrega}', '{$responsavelAbertura}', '{$responsavelExecucao}', '{$statusDemanda}', '{$esforcoEstimado}', '{$esforcoTotal}', '{$aceiteAnalista}', '{$opiniaoCliente}')";
+		$sql .= " ('{$empresa}', '{$contato}', '{$telefone}', '{$email}', '{$area}', '{$sistema}', '{$prioridade}', '{$descricao}', '{$observacao}', '{$dataAbertura}', '{$dataEntrega}', '{$responsavelAbertura}', '{$responsavelExecucao}', '{$statusDemanda}', '{$esforcoEstimado}', '{$esforcoTotal}', '{$aceiteAnalista}', '{$opiniaoCliente}')";
 
 
 // Tira o último caractere (vírgula extra)
@@ -37,7 +42,7 @@ echo $sql;
 
 mysqli_query($conexao, $sql) or die('Error, query failed');
 
-//echo 'Usuários cadastrados: ' . $cadastrados;
+
 
 $id = mysqli_insert_id($conexao);
 

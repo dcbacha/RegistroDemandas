@@ -4,11 +4,10 @@ header("Content-Type: text/html; charset=utf-8");
 
 session_start();
 
+
 /* para produção 
 $DB_host = "localhost";
 $DB_name = "PSGDemandas";
-//$DB_user = "geo_estatistica-usr";
-//$DB_pass = "EihRK3eMUzYFinQz";
 $DB_user = "root";
 $DB_pass = "";
 

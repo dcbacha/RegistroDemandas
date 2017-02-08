@@ -10,6 +10,8 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/responsivel.css">
+
 	<link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 
 	<link rel="icon" href="psgicon.ico">
@@ -52,6 +54,7 @@
 			
 	</table>
 	<br/>
+
 <!--******************************************************************************************************************************************-->
 	<table class="table table-bordered">
 			<tr>
@@ -67,13 +70,13 @@
 					<strong>Empresa:</strong>
 				</td>
 				<td width="45%">
-					<input class="form-control input-sm" type="text" name="empresa">
+					<input class="form-control input-sm" type="text" name="empresa" id="empresa">
 				</td>
 				<td width="5%" class="titulo">
 					<strong>Contato:</strong>
 				</td>
 				<td width="45%">
-					<input class="form-control input-sm" type="text" name="contato">
+					<input class="form-control input-sm" type="text" name="contato" id="contato">
 				</td>
 			</tr>
 
@@ -82,13 +85,13 @@
 					<strong>Telefone:</strong>
 				</td>
 				<td>
-					<input class="form-control input-sm" type="number" name="telefone" >
+					<input class="form-control input-sm" type="number" name="telefone" id="telefone" >
 				</td>
 				<td class="titulo">
 					<strong>E-mail:</strong>
 				</td>
 				<td>
-					<input class="form-control input-sm" type="email" name="email-cliente">
+					<input class="form-control input-sm" type="email" name="email-cliente" id="email-cliente">
 				</td>
 			</tr>
 			<tr>
@@ -96,7 +99,7 @@
 					<strong>Área:</strong>
 				</td>
 				<td colspan="3">
-					<input class="form-control input-sm" type="text" name="area">
+					<input class="form-control input-sm" type="text" name="area" id="area">
 				</td>
 			</tr>
 	</table>
@@ -278,10 +281,10 @@
 				</tr>
 	</table>
 	<table>
-		<label class="control-label">Anexar arquivos(.pdf, .txt, .png, .jpg, .doc, .xls)</label>
+		<label class="control-label">Anexar arquivos(.pdf, .txt, .png, .jpg, .doc, .docx, .xls, .xlsx, .csv)</label>
 	<!--	<input type="file" class="filestyle"  name="arquivo[]" multiple id="arquivo" data-buttonBefore="true" data-buttonText="Procurar"> -->
 		
-		<input type="file" class="file"  name="arquivo[]" multiple id="arquivo" data-show-upload="false"  data-allowed-file-extensions='["pdf", "txt", "jgp", "png","doc", "xls"]' data-browse-label="Procurar" data-show-remove="false" data-browse-class="btn btn-default">
+		<input type="file" class="file"  name="arquivo[]" multiple id="arquivo" data-show-upload="false"  data-allowed-file-extensions='["pdf", "txt", "jgp", "png","doc", "xls", "docx", "xlsx", "csv"]' data-browse-label="Procurar" data-show-remove="false" data-browse-class="btn btn-default">
 
 
 
@@ -292,7 +295,13 @@
 
 
 <!--******************************************************************************************************************************************-->
+
+<table>
+	<img src="img/spinner.gif" alt="Spinner" id="spinner" hidden>
+</table>
 <table class="table">
+
+
 <tr>
 	<button style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" class="btn btn-success pull-left" type="submit" name="salvaBD">
 <!--	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-success pull-left"> -->
@@ -311,19 +320,16 @@
 <?php
 
 
-
-
-
-if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe']=="open")
-{
+if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe']=="open"){
 	$total = count($_FILES['arquivo']['name']);
+
 	$id = $_SESSION['id'] ;
 
 	
 
 	for($i=0; $i<$total; $i++) {
 
-		$allowed =  array('pdf', 'PDF', 'txt' , 'png' ,'jpg', 'doc', 'xls');
+		$allowed =  array('pdf', 'PDF', 'txt' , 'png' ,'jpg', 'doc', 'docx', 'csv', 'xls' , 'xlsx');
 		$filename = $_FILES['arquivo']['name'][$i];
 		$ext = pathinfo($filename, PATHINFO_EXTENSION);
 		if(!in_array($ext,$allowed) ) {
@@ -348,7 +354,7 @@ if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe
 
 		
 
-		$query = "INSERT INTO documentos (id_demanda, name, size, type, content ) ".
+		$query = "INSERT INTO documentos (demanda_id, name, size, type, content ) ".
 		"VALUES ('$id', '$fileName', '$fileSize', '$fileType', '$content')";
 
 		mysqli_query($conexao, $query) or die('Error, query failed');
@@ -357,8 +363,11 @@ if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe
 	}
 
 	$_SESSION['safe'] = "close";
+
+//	mysqli_close($conexao);
+
 	
-} 
+}  
 
 ?>
 
