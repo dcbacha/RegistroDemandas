@@ -281,14 +281,11 @@
 				</tr>
 	</table>
 	<table>
-		<label class="control-label">Anexar arquivos(.pdf, .txt, .png, .jpg, .doc, .docx, .xls, .xlsx, .csv)</label>
+		<label style="margin-top: 3px; padding-left: 5px;" class="control-label">Anexar arquivos(.pdf, .txt, .png, .jpg, .doc, .docx, .xls, .xlsx, .csv)</label>
 	<!--	<input type="file" class="filestyle"  name="arquivo[]" multiple id="arquivo" data-buttonBefore="true" data-buttonText="Procurar"> -->
 		
 		<input type="file" class="file"  name="arquivo[]" multiple id="arquivo" data-show-upload="false"  data-allowed-file-extensions='["pdf", "txt", "jgp", "png","doc", "xls", "docx", "xlsx", "csv"]' data-browse-label="Procurar" data-show-remove="false" data-browse-class="btn btn-default">
 
-
-
-		
 	</table>
 
 
