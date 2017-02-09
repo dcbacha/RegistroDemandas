@@ -41,7 +41,7 @@ echo $sql;
 //$stmt = $DBcon->prepare($sql);
 //$stmt->execute();
 
-mysqli_query($conexao, $sql) or die('Error, query failed');
+mysqli_query($conexao, $sql) or die($_SESSION['erro'] = 'Falha na conexão com banco de dados');
 
 
 
