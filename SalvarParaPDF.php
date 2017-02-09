@@ -8,11 +8,31 @@
 	$email_cliente = $_POST['email-cliente'];
 	$area = $_POST['area'];
 
+	$codigo_demanda = $_POST['codigo-demanda'];
+	$sistema = $_POST['sistema'];
+	$prioridade =$_POST['prioridade-demanda'];
+	$descricao = $_POST['descricao-demanda'];
+
+	$observacao = $_POST['obs-demanda'];
+	$responsavel_abertura = $_POST['responsavel-abertura'];
+	$responsavel_execucao = $_POST['responsavel-execucao'];
+	$status = $_POST['status-demanda'];
+	$esforco_estimado = $_POST['esforco-estimado'];
+	$esforco_total = $_POST['esforco-total'];
+	$aceite = $_POST['aceite-analista'];
+	$opiniao = $_POST['opiniao-cliente'];
 
 
-	if($originalDate_inic_serv = $_POST['data-inicio-servico']){
-		$data_inicio_servico = date("d/m/Y", strtotime($originalDate_inic_serv));
-	} else{$data_inicio_servico = null; }
+	if($originalDate_abertura = $_POST['data-abertura-demanda']){
+		$data_abertura_demanda= date("d/m/Y", strtotime($originalDate_abertura));
+	} else{$data_abertura_demanda = null; }
+
+	if($originalDate_entrega = $_POST['data-entrega-demanda']){
+		$data_entrega_demanda= date("d/m/Y", strtotime($originalDate_entrega));
+	} else{$data_entrega_demanda = null; }				
+
+			
+	
 
 
 
@@ -31,7 +51,7 @@ ob_start();
 					<img src="psg.jpg">
 				</td>
 				<td align="center">
-					<h1>Registro de Atividades</h1>
+					<h1>Registro de Demandas</h1>
 				</td>
 				<td align="center">
 					DEV-100
@@ -40,7 +60,7 @@ ob_start();
 	</table>
 	<br/>
 <!--******************************************************************************************************************************************-->
-<table border="1" cellspacing="0" style="border-collapse:collapse;" >
+<table border="1" cellspacing="0" width="100%" style="border-collapse:collapse;" >
 			<tr>
 				<td align="center" colspan="4" bgcolor="#CCC" >
 					<strong>Identificação do Cliente</strong>
@@ -63,21 +83,21 @@ ob_start();
 			</tr>
 
 			<tr>
-				<td>
+				<td width="5%">
 					<strong>Telefone:</strong>
 				</td>
-				<td>
+				<td width="45%">
 					<?= $telefone ?>
 				</td>
-				<td>
+				<td width="5%">
 					<strong>E-mail:</strong>
 				</td>
-				<td>
+				<td width="45%">
 					<?= $email_cliente ?>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td width="5%">
 					<strong>Área:</strong>
 				</td>
 				<td colspan="3">
@@ -87,99 +107,39 @@ ob_start();
 	</table>
 
 <!--*********************************************************************************************************************************************-->
-	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
+	<table  border="1" cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
 			<tr>
-				<td align="center" class='text-center' bgcolor='#CCC'>
+				<td align="center" bgcolor='#CCC' width="100%" colspan="6">
 					<strong>Identificação da Demanda</strong>
 				</td>
 			</tr>
-	</table>
-
-<div id="tab_logic">
-
-
-
-<div id='addr0'>
-
-
-<!-- aqui entra no loop -->
-
-<?php
-	$i=0;
-	$total=0;
-	for($i; $i <= 20 ; $i++) {
-
-		if(isset($_POST['descricao-demanda'.$i])){
-
-			if($_POST['descricao-demanda'.$i]){
-				$codigo_demanda = $_POST['codigo-demanda'.$i];
-				$sistema = $_POST['sistema-demanda'.$i];
-				$prioridade =$_POST['prioridade-demanda'.$i];
-				$descricao = $_POST['descricao-demanda'.$i];
-
-				$observacao = $_POST['obs-demanda'.$i];
-				$responsavel_abertura = $_POST['responsavel-abertura'.$i];
-				$responsavel_execucao = $_POST['responsavel-execucao'.$i];
-				$status = $_POST['status-demanda'.$i];
-				$esforco_estimado = $_POST['esforco-estimado-demanda'.$i];
-				$esforco_total = $_POST['esforco-total-demanda'.$i];
-				$aceite = $_POST['aceite-analista'.$i];
-				$opiniao = $_POST['opiniao-cliente'.$i];
-
-
-				if($originalDate_abertura = $_POST['data-abertura-demanda'.$i]){
-					$data_abertura_demanda[$i]= date("d/m/Y", strtotime($originalDate_abertura));
-				} else{$data_abertura_demanda[$i] = null; }
-
-				if($originalDate_entrega = $_POST['data-entrega-demanda'.$i]){
-					$data_entrega_demanda[$i]= date("d/m/Y", strtotime($originalDate_entrega));
-				} else{$data_entrega_demanda[$i] = null; }				
-
-				$total++;
-
-			?>
-
-	<?php
-	if($total>1){
-	?>
-	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
 			<tr>
-				<td align="center" class='text-center' bgcolor='#000'>
-				</td>
-			</tr>
-	</table>
-	<?php
-	}
-	?>
-
-	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
-			<tr>
-				<td width='5%'>
+				<td width="10%">
 					<strong>Código:</strong>
 				</td>
-				<td width='10%'>
+				<td width="20%">
 					<?= $codigo_demanda ?>
 				</td>
-				<td width='5%'>
+				<td width="10%">
 					<strong>Sistema:</strong>
 				</td>
-				<td>
+				<td width="20%">
 					<?= $sistema ?>
 				</td>
 							
-				<td width='5%'>
+				<td width="15%">
 					<strong>Prioridade:</strong>
 				</td>
-				<td>
+				<td width="25%">
 					<?= $prioridade ?>
 				</td>
 			</tr>
 	
 			<tr>
-				<td width='5%'>
+				<td width="5%">
 					<strong>Descrição:</strong>
 				</td>
-				<td colspan='5'>
+				<td colspan="5" width="95%">
 					<?= $descricao ?>
 				</td>
 			</tr>
@@ -187,74 +147,71 @@ ob_start();
 
 	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
 			<tr>
-				<td>
+				<td width="20%">
 					<strong>Observação:</strong>
 				</td>
-				<td colspan="3">
+				<td width="80%" colspan="3">
 					<?= $observacao ?>
 				</td>
 			</tr>
 			<tr>
-				<td width='20%'>
+				<td width="20%">
 					<strong>Data de Abertura:</strong>
 				</td>
-				<td width='30%'>
-					<?= $data_abertura_demanda[$i] ?>
+				<td width="30%">
+					<?= $data_abertura_demanda ?>
 				</td>
-				<td width='20%'>
+				<td width="20%">
 					<strong>Data de Entrega:</strong>
 				</td>
-				<td width='30%'>
-					<?= $data_entrega_demanda[$i] ?>
+				<td width="30%">
+					<?= $data_entrega_demanda ?>
 				</td>
 			</tr>
-			
 	</table>
-
 
 	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
 			<tr>
-				<td width='30%'>
+				<td width="30%">
 					<strong>Responsável pela Abertura:</strong>
 				</td>
-				<td>
+				<td width="70%">
 					<?= $responsavel_abertura ?>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td width="30%">
 					<strong>Responsável pela Execução:</strong>
 				</td>
-				<td>
+				<td width="70%">
 					<?= $responsavel_execucao ?>
 				</td>
-
 			</tr>
 	</table>
 
 	<table  border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
 			<tr>
-				<td width='5%'>
+				<td width="10%">
 					<strong>Status:</strong>
 				</td>
-				<td width='15%'>
+				<td width="20%">
 					<?= $status ?>
 				</td>
-				<td width='20%'>
+				<td width="20%">
 					<strong>Esforço Estimado:</strong>
 				</td>
-				<td width='20%'>
+				<td width="15%">
 					<?= $esforco_estimado ?>
 				</td>
-				<td width='20%'>
+				<td width="20%">
 					<strong>Esforço Total:</strong>
 				</td>
-				<td>
+				<td width="15%">
 					<?= $esforco_total ?>
 				</td>
 			</tr>
 	</table>
-
+	
 	<table border="1"  cellspacing="0" width="100%" style="border-collapse:collapse;  margin-top: -1px;">
 			<tr>
 				<td width='20%'>
@@ -269,24 +226,10 @@ ob_start();
 				<td width='20%' valign="top">
   					<?= $opiniao?>
 				</td>
-
-				</tr>
+			</tr>
 	</table>
-	
-
-<!-- aqui sai do loop -->
-
-<?php
-			}
-		} 
-	}
-?>
 
 <!--******************************************************************************************************************************************-->
-
-
-
-</form>
 
 </div>
 </body>
@@ -298,7 +241,8 @@ $body = ob_get_clean();
 
         $body = iconv("UTF-8","UTF-8//IGNORE",$body);
 
-        include("mpdf/mpdf.php");
+       // include("mpdf/mpdf.php");
+        require 'mpdf/vendor/autoload.php';
         $mpdf=new \mPDF('c','A4','10','1' , 20, 20, 10, 10, 0, 0); 
 
         //write html to PDF

@@ -7,6 +7,28 @@
 	$email_cliente = $_POST['email-cliente'];
 	$area = $_POST['area'];
 
+//*** infos Identificação da Demanda
+	$codigo_demanda = $_POST['codigo-demanda'];
+	$sistema = $_POST['sistema'];
+	$prioridade =$_POST['prioridade-demanda'];
+	$descricao = $_POST['descricao-demanda'];
+	$observacao = $_POST['obs-demanda'];
+	$responsavel_abertura = $_POST['responsavel-abertura'];
+	$responsavel_execucao = $_POST['responsavel-execucao'];
+	$status = $_POST['status-demanda'];
+	$esforco_estimado = $_POST['esforco-estimado'];
+	$esforco_total = $_POST['esforco-total'];
+	$aceite = $_POST['aceite-analista'];
+	$opiniao = $_POST['opiniao-cliente'];
+
+
+	if($originalDate_abertura = $_POST['data-abertura-demanda']){
+		$data_abertura_demanda= date("d/m/Y", strtotime($originalDate_abertura));
+	} else{$data_abertura_demanda = null; }
+
+	if($originalDate_entrega = $_POST['data-entrega-demanda']){
+		$data_entrega_demanda= date("d/m/Y", strtotime($originalDate_entrega));
+	} else{$data_entrega_demanda = null; }	
 
 //************************************************************************************************************
 
@@ -152,42 +174,9 @@ $getSheet->getStyle('A8')->applyFromArray($color);
 $getSheet->getStyle('A8')->getFont()->setBold(true);
 $getSheet->getStyle('A8')->applyFromArray($style);
 
-//Variáveis
-$i=0;
-$linha=0;
-$total = 1;
-for($i; $i <= 20 ; $i++) {
 
-	if(isset($_POST['descricao-demanda'.$i])){
-
-		if($_POST['descricao-demanda'.$i]){
-			//$data_atividade[$i] = $_POST['data-atividade'.$i];
-
-				$codigo_demanda = $_POST['codigo-demanda'.$i];
-				$sistema = $_POST['sistema-demanda'.$i];
-				$prioridade =$_POST['prioridade-demanda'.$i];
-				$descricao = $_POST['descricao-demanda'.$i];
-
-				$observacao = $_POST['obs-demanda'.$i];
-				$responsavel_abertura = $_POST['responsavel-abertura'.$i];
-				$responsavel_execucao = $_POST['responsavel-execucao'.$i];
-				$status = $_POST['status-demanda'.$i];
-				$esforco_estimado = $_POST['esforco-estimado-demanda'.$i];
-				$esforco_total = $_POST['esforco-total-demanda'.$i];
-				$aceite = $_POST['aceite-analista'.$i];
-				$opiniao = $_POST['opiniao-cliente'.$i];
-
-
-				if($originalDate_abertura = $_POST['data-abertura-demanda'.$i]){
-					$data_abertura_demanda[$i]= date("d/m/Y", strtotime($originalDate_abertura));
-				} else{$data_abertura_demanda[$i] = null; }
-
-				if($originalDate_entrega = $_POST['data-entrega-demanda'.$i]){
-					$data_entrega_demanda[$i]= date("d/m/Y", strtotime($originalDate_entrega));
-				} else{$data_entrega_demanda[$i] = null; }
-
-			//tem q ta aqui o rolee
-			$linha = $linha + 9*$total;
+			//manteve a variável para reaproveitamento de codigo antigo
+			$linha = 9;
 
 
 			
@@ -239,7 +228,7 @@ for($i; $i <= 20 ; $i++) {
 			$getSheet->getStyle('A'.($linha+3))->getFont()->setBold(true);
 
 			$setSheet->mergeCells('C'.($linha+3).':'.'G'.($linha+3));//area data Abertura
-			$getSheet->setCellValue('C'.($linha+3), $data_abertura_demanda[$i]);
+			$getSheet->setCellValue('C'.($linha+3), $data_abertura_demanda);
 			$getSheet->getStyle('C'.($linha+3))->getProtection()->setLocked($desprotegido); 
 
 			$setSheet->mergeCells('H'.($linha+3).':'.'I'.($linha+3));//Data de Entrega
@@ -247,7 +236,7 @@ for($i; $i <= 20 ; $i++) {
 			$getSheet->getStyle('H'.($linha+3))->getFont()->setBold(true);
 
 			$setSheet->mergeCells('J'.($linha+3).':'.'N'.($linha+3));//area Data Entrega
-			$getSheet->setCellValue('J'.($linha+3), $data_entrega_demanda[$i]);
+			$getSheet->setCellValue('J'.($linha+3), $data_entrega_demanda);
 			$getSheet->getStyle('J'.($linha+3))->getProtection()->setLocked($desprotegido); 
 
 			$setSheet->mergeCells('A'.($linha+4).':'.'C'.($linha+4));//Responsável Abertura
@@ -310,23 +299,11 @@ for($i; $i <= 20 ; $i++) {
 			$getSheet->getStyle('J'.($linha+7))->getProtection()->setLocked($desprotegido);
 			$getSheet->getStyle('J'.($linha+7))->applyFromArray($canto);   
 
-			if($total >= 2){
-			$setSheet->mergeCells('A'.($linha-1).':'.'N'.($linha-1));//divisão
-			$getSheet->getStyle('A'.($linha-1))->applyFromArray($color);
-			}
-
-			$linha++;
-			$linha = $linha-9*$total;
-			$total ++;
-		}	
-	}
-}
-
 
 ////////////////////////////////BORDAS/////////////////////////////
 $getSheet->getStyle('A2:N2')->applyFromArray($border);
 
-$tableBorder = 'A4:N'.($linha+9*$total-2);
+$tableBorder = 'A4:N17';
 $getSheet->getStyle($tableBorder)->applyFromArray($border);
 
 /////////////////////////////PROTEÇÃO DE CELULA////////////////////

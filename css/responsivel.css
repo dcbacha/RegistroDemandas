@@ -23,6 +23,11 @@ textarea {
     resize: vertical;
 }
 
+@media (max-width: 400px){
+  .button-big{ display: none; }
+  .button-small{ display: inline; }
+}
+
 @media (max-width: 990px) and (min-width: 600px) { 
   .ajuste{
         word-wrap: break-word;

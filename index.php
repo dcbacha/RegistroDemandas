@@ -296,20 +296,23 @@
 <table>
 	<img src="img/spinner.gif" alt="Spinner" id="spinner" hidden>
 </table>
-<table class="table">
 
-
-<tr>
-	<button style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" formaction="concluido.php" class="btn btn-success pull-left" type="submit" name="salvaBD">
+	<button style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" formaction="concluido.php" class="btn btn-success" type="submit" name="salvaBD">
 <!--	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-success pull-left"> -->
 		Salvar
 	</button>
-	
+	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-primary">
+		<span class="button-big"> Gerar PDF </span>
+		<span  class="button-small" hidden>PDF</span>
+	</button>
+	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="excel" formaction="SalvarParaExcel.php" class="btn btn-primary">
+		<span class="button-big"> Gerar Excel </span>
+		<span class="button-small" hidden>Excel</span>
+	</button>
 	<button style="margin-top: 3px; margin-bottom: 3px;" onclick="return reload();" formnovalidate class="btn btn-danger pull-right" >
 		Cancelar
 	</button>
-	</tr>
-</table>
+
 
 </form>
 
