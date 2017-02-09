@@ -8,7 +8,7 @@ $dados = json_decode($_POST["dados"],true);
 
  
 // inserir na tabela de condutores
-$sql = "INSERT INTO `demandas` (`empresa`, `contato`, `telefone`, `email`, `area`, `sistema`, `prioridade`, `descricao`, `observacao`, `dataAbertura`, `dataEntrega`, `responsavelAbertura`, `responsavelExecucao`, `statusDemanda`, `esforcoEstimado`, `esforcoTotal`, `aceiteAnalista`, `opiniaoCliente`) VALUES";
+$sql = "INSERT INTO `demandas` (`empresa`, `contato`, `telefone`, `email`, `area`, `codigo`, `sistema`, `prioridade`, `descricao`, `observacao`, `dataAbertura`, `dataEntrega`, `responsavelAbertura`, `responsavelExecucao`, `statusDemanda`, `esforcoEstimado`, `esforcoTotal`, `aceiteAnalista`, `opiniaoCliente`) VALUES";
 		
 		$empresa = $dados['empresa'];
 		$contato = $dados['contato'];
@@ -16,6 +16,7 @@ $sql = "INSERT INTO `demandas` (`empresa`, `contato`, `telefone`, `email`, `area
 		$email = $dados['email'];
 		$area = $dados['area'];
 
+		$codigo = $dados['codigo'];
     	$sistema = $dados['sistema'];
 		$prioridade = $dados['prioridade'];
 		$descricao = $dados['descricao'];
@@ -30,7 +31,7 @@ $sql = "INSERT INTO `demandas` (`empresa`, `contato`, `telefone`, `email`, `area
 		$aceiteAnalista = $dados['aceiteAnalista'];
 		$opiniaoCliente =$dados['opiniaoCliente'];
 		 
-		$sql .= " ('{$empresa}', '{$contato}', '{$telefone}', '{$email}', '{$area}', '{$sistema}', '{$prioridade}', '{$descricao}', '{$observacao}', '{$dataAbertura}', '{$dataEntrega}', '{$responsavelAbertura}', '{$responsavelExecucao}', '{$statusDemanda}', '{$esforcoEstimado}', '{$esforcoTotal}', '{$aceiteAnalista}', '{$opiniaoCliente}')";
+		$sql .= " ('{$empresa}', '{$contato}', '{$telefone}', '{$email}', '{$area}', '{$codigo}','{$sistema}', '{$prioridade}', '{$descricao}', '{$observacao}', '{$dataAbertura}', '{$dataEntrega}', '{$responsavelAbertura}', '{$responsavelExecucao}', '{$statusDemanda}', '{$esforcoEstimado}', '{$esforcoTotal}', '{$aceiteAnalista}', '{$opiniaoCliente}')";
 
 
 // Tira o último caractere (vírgula extra)

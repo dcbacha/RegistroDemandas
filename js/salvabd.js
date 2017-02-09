@@ -33,6 +33,7 @@ $("#salvaBD").click(function(){
 		var email = $("#email-cliente").val();
 		var area = $("#area").val();
 
+		var codigo = $("#codigo-demanda").val();
 		var sistema = $("#sistema").val();
 		var prioridade = $("#prioridade-demanda").val();
 		var descricao = $("#descricao-demanda").val();
@@ -53,6 +54,7 @@ $("#salvaBD").click(function(){
 			telefone: telefone,
 			email: email,
 			area: area,
+			codigo: codigo,
 			sistema: sistema,
 			prioridade: prioridade,
 			descricao: descricao,

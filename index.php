@@ -281,10 +281,10 @@
 				</tr>
 	</table>
 	<table>
-		<label style="margin-top: 3px; padding-left: 5px;" class="control-label">Anexar arquivos(.pdf, .txt, .png, .jpg, .doc, .docx, .xls, .xlsx, .csv)</label>
+		<label style="margin-top: 3px; padding-left: 3px;" class="control-label">Anexar arquivos(.pdf, .txt, .png, .jpg, .doc, .docx, .xls, .xlsx, .csv)</label>
 	<!--	<input type="file" class="filestyle"  name="arquivo[]" multiple id="arquivo" data-buttonBefore="true" data-buttonText="Procurar"> -->
 		
-		<input type="file" class="file"  name="arquivo[]" multiple id="arquivo" data-show-upload="false"  data-allowed-file-extensions='["pdf", "txt", "jgp", "png","doc", "xls", "docx", "xlsx", "csv"]' data-browse-label="Procurar" data-show-remove="false" data-browse-class="btn btn-default">
+		<input type="file" class="file"  name="arquivo[]" multiple id="arquivo" data-show-upload="false"  data-allowed-file-extensions='["pdf", "txt", "jgp", "png","doc", "xls", "docx", "xlsx", "csv"]' data-browse-label="Procurar" data-browse-class="btn btn-default">
 
 	</table>
 
@@ -300,7 +300,7 @@
 
 
 <tr>
-	<button style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" class="btn btn-success pull-left" type="submit" name="salvaBD">
+	<button style="margin-top: 3px; margin-bottom: 3px;"  id="salvaBD" formaction="concluido.php" class="btn btn-success pull-left" type="submit" name="salvaBD">
 <!--	<button style="margin-top: 3px; margin-bottom: 3px;" type="submit" name="pdf" formaction="SalvarParaPDF.php" class="btn btn-success pull-left"> -->
 		Salvar
 	</button>
@@ -316,7 +316,7 @@
 
 <?php
 
-
+/*
 if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe']=="open"){
 	$total = count($_FILES['arquivo']['name']);
 
@@ -365,7 +365,7 @@ if(isset($_POST['salvaBD']) && $_FILES['arquivo']['size'] > 0 && $_SESSION['safe
 
 	
 }  
-
+*/
 ?>
 
 	<script src="js/jquery-3.1.1.js" type="text/javascript"></script>
